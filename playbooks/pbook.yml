@@ -1,0 +1,9 @@
+---
+- name: Install Docker Engine
+  hosts: app, app1
+#  become_user: vpronin72
+#  remote_user: yc-sa-my-ansible-sa
+  become: yes
+  become_method: sudo
+  roles:
+    - role: docker

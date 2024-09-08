@@ -1,22 +1,10 @@
-[database:vars]
+[all:vars]
 ansible_connection=ssh
-ansible_user=yc-sa-my-ansible-sa
 ansible_ssh_private_key_file=~/.ssh/id_yc-sa-my-ansible-sa
-
-[web:vars]
-ansible_connection=ssh
 ansible_user=yc-sa-my-ansible-sa
-ansible_ssh_private_key_file=~/.ssh/id_yc-sa-my-ansible-sa
-
-[app:vars]
-ansible_connection=ssh
-ansible_user=yc-sa-my-ansible-sa
-ansible_ssh_private_key_file=~/.ssh/id_yc-sa-my-ansible-sa
 
 [app1:vars]
-ansible_connection=ssh
 ansible_user=my-ansible-sa
-ansible_ssh_private_key_file=~/.ssh/id_yc-sa-my-ansible-sa
 
 [database]
 #vm1
@@ -31,4 +19,4 @@ ansible_ssh_private_key_file=~/.ssh/id_yc-sa-my-ansible-sa
 
 [app1]
 #vm3
-89.169.175.9
+89.169.162.22
