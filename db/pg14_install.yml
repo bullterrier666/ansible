@@ -2,7 +2,15 @@
 - name: "Install PostgreSQL 14"
   hosts: database
 
+  module_defaults:
+    ansible.builtin.package:
+      use: dnf
+
   tasks:
+
+#    - name: Prints
+#      ansible.builtin.debug:
+#        msg: "{{ ansible_facts[ansible_pkg_mgr] }}"
 
     - name: "1) Download PostgreSQL Repository RPM"
       get_url:
@@ -10,10 +18,17 @@
         dest: /etc/yum.repos.d/pgdg-redhat-repo-latest.noarch.rpm
         validate_certs: no
 
-    - name: "2) Configure repository"
-      yum:
+    - name: "2.1) Configure repository use yum"
+      ansible.builtin.yum:
         name: /etc/yum.repos.d/pgdg-redhat-repo-latest.noarch.rpm
         state: present
+      when: ansible_pkg_mgr == 'yum'
+
+    - name: "2.2) Configure repository use dnf"
+      ansible.builtin.apt:
+        name: /etc/yum.repos.d/pgdg-redhat-repo-latest.noarch.rpm
+        state: present
+      when: ansible_pkg_mgr == 'apt'
 
     - name: "3) Update repository"
       shell: yum -y update
