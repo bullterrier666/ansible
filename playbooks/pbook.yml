@@ -1,9 +1,14 @@
 ---
 - name: Install Docker Engine
-  hosts: app, app1
-#  become_user: vpronin72
-#  remote_user: yc-sa-my-ansible-sa
+  hosts: app
   become: yes
   become_method: sudo
   roles:
     - role: docker
+
+- name: Postgresql Install
+  hosts: database
+  become: yes
+  become_method: sudo
+  roles:
+    - role: db

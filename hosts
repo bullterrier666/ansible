@@ -1,10 +1,11 @@
 [all:vars]
 ansible_connection=ssh
 ansible_ssh_private_key_file=~/.ssh/id_yc-sa-my-ansible-sa
-#ansible_user=yc-sa-my-ansible-sa
 
-#[app1:vars]
-#ansible_user=my-ansible-sa
+[database:vars]
+postgresql_version="16"
+postgresql_bin_path="/usr/lib/postgresql/{{ postgresql_version }}/bin"
+postgresql_data_dir="/var/lib/postgresql/{{ postgresql_version }}/main"
 
 [database]
 #vm1
@@ -16,7 +17,5 @@ ansible_ssh_private_key_file=~/.ssh/id_yc-sa-my-ansible-sa
 [app]
 #vm2
 89.169.164.113 ansible_user=yc-sa-my-ansible-sa
-
-[app1]
 #vm3
-89.169.162.22 ansible_user=my-ansible-sa
+89.169.174.11 ansible_user=my-ansible-sa
